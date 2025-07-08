@@ -1,74 +1,74 @@
 # 🧠 Support Vector Machines (SVM) Project
 
-This project demonstrates the implementation of **Support Vector Machines (SVM)** using Python and `scikit-learn` for binary classification. The dataset includes loan application data, and the goal is to predict whether a loan was **fully paid** or **not fully paid**.
+This project implements Support Vector Machines using Python and scikit-learn to predict whether a loan is **fully paid** or **not fully paid** based on borrower and loan characteristics.
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
-- `02-Support Vector Machines Project.ipynb`: Jupyter notebook containing the full analysis, model training, and evaluation.
-- `README.md`: Project overview and setup instructions.
+- `02-Support Vector Machines Project.ipynb` – Main Jupyter Notebook
+- `README.md` – Project summary and documentation
 
 ---
 
-## 📊 Dataset Description
+## 📊 Dataset Overview
 
-The dataset contains the following key columns:
+The dataset includes features like:
 
-- `credit.policy`
-- `int.rate`
-- `installment`
-- `log.annual.inc`
-- `purpose` *(categorical)*
-- `fico`
-- `days.with.cr.line`
-- `revol.bal`
-- `revol.util`
-- `inq.last.6mths`
-- `delinq.2yrs`
-- `pub.rec`
-- `not.fully.paid` *(target variable)*
+- `credit.policy` – Does the customer meet the credit underwriting criteria?
+- `int.rate` – Interest rate of the loan
+- `installment` – Monthly payment owed by the borrower
+- `log.annual.inc` – Log-transformed annual income
+- `purpose` – Purpose of the loan (categorical)
+- `fico` – FICO credit score
+- `not.fully.paid` – Target variable (1 = Not fully paid, 0 = Fully paid)
 
 ---
 
 ## 🚀 Workflow Summary
 
-1. **Exploratory Data Analysis (EDA)**
-   - Checked for missing values and data distribution
-   - Used `seaborn` and `matplotlib` for visualization
+1. **Data Exploration**
+   - Identified missing values and categorical features
+   - Plotted distributions and relationships
 
-2. **Data Preprocessing**
-   - Converted the `purpose` column to dummy variables using `pd.get_dummies()`
-   - Dropped the first dummy variable to avoid multicollinearity (`drop_first=True`)
-   - Prepared the final feature set
+2. **Preprocessing**
+   - Created dummy variables for `purpose`
+   - Scaled numerical data if needed
 
-3. **Train/Test Split**
-   - Used `train_test_split` from `sklearn.model_selection` to split data into training and testing sets
+3. **Model Training**
+   - Used `SVC` from scikit-learn
+   - Trained with default and tuned parameters
 
-4. **Model Training**
-   - Trained a Support Vector Classifier using `SVC()` from `sklearn.svm`
-   - Tried different kernels: `linear`, `rbf`, etc.
-   - Adjusted hyperparameters like `C` and `gamma`
-
-5. **Model Evaluation**
-   - Evaluated performance using:
-     - Confusion Matrix
-     - Classification Report
-   - Assessed accuracy, precision, recall, and F1-score
+4. **Evaluation**
+   - Used `confusion_matrix` and `classification_report`
+   - Compared kernels (e.g., linear, rbf)
 
 ---
 
 ## 📈 Visualizations
 
-- Confusion matrix heatmap
-- KDE and scatter plots using Seaborn’s `FacetGrid`
-- Count plots and pair plots for feature distribution
+- Countplots by loan status and purpose
+- KDE plots for FICO scores
+- Confusion matrices
+- Jointplots showing interest rate vs. FICO
 
 ---
 
-## 📌 Dependencies
+## 🧠 Insights & Observations
 
-Install with:
+- 📉 **FICO Scores Matter** – Higher FICO scores are associated with fewer loan defaults.
+- 💸 **Interest Rates** – Defaulted loans tend to have higher interest rates.
+- 🎯 **Loan Purpose** – Certain loan types like small business or debt consolidation showed higher default rates.
+- 🧪 **Model Findings**:
+  - SVM performed well but struggled slightly with class imbalance.
+  - RBF kernel handled non-linear boundaries better than linear.
+  - Hyperparameter tuning (especially `C` and `gamma`) improves performance.
+
+---
+
+## 📦 Requirements
+
+Install dependencies using:
 
 ```bash
-pip install pandas numpy scikit-learn matplotlib seaborn
+pip install pandas numpy matplotlib seaborn scikit-learn
